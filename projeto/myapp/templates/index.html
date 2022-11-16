@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+        <title>Home</title>
+    </head>
+    <body>
+        <header class="flex-row">
+            <div class="flex-row nav">
+                <h3>Termômetro</h3>
+                <nav>
+                    <ul class="flex-row">
+                        <div class="li-single flex-column">
+                            <li class="link selected" id="dashboard"
+                                >Dashboard</li
+                            >
+                            <hr class="hr hr-selected" id="dashboard" />
+                        </div>
+                        <div class="li-single flex-column">
+                            <li
+                                class="link"
+                                onclick="{window.location.href = '/historico/'}"
+                                id="historico"
+                                >Histórico</li
+                            >
+                            <hr class="hr" id="historico" />
+                        </div>
+
+                        {% if log == 0 %}
+                        <div class="li-single flex-column">
+                            <li class="link" onclick="linked(event)" id="login"
+                                >Login</li
+                            >
+                            <hr class="hr" id="login" />
+                        </div>
+                        {% else %}
+                        <div class="li-single flex-column">
+                            <li
+                                class="link"
+                                onclick="{window.location.href = '/logout/'}"
+                                id="logout"
+                                >Logout</li
+                            >
+                            <hr class="hr" id="logout" />
+                        </div>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="flex-row profile">
+                <span>{{ uid.usuario }}</span>
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                />
+            </div>
+        </header>
+
+        <main class="flex-row panels">
+            <div class="flex-row panel">
+                <div class="flex-column card">
+                    <div class="flex-row card-header">
+                        <span>Meta</span>
+                        <span id="editMeta">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png">
+                        </span>
+
+                        <form action="/editMeta/" method="post" class="editMeta" id="editMetaForm">
+                            {% csrf_token %}
+
+                            <div class="flex-column">
+                                <span>Valor</span>
+                                {{editMeta.meta}}
+                            </div>
+                            <button type="submit" id="submit">Enviar</button>
+                        </form>
+                    </div>
+
+                    <div class="flex-row card-footer">
+                        <span>R$</span>
+                        <span id="meta">{{uid.meta}}</span>
+                    </div>
+                </div>
+
+                <div class="flex-column info-panel">
+                    <div class="flex-column vendido">
+                        <span>Vendido</span>
+                        <div class="flex-row">
+                            <span>R$</span>
+                            <span id="vendido"> {{ vendas.valor__sum }} </span>
+                        </div>
+                    </div>
+
+                    <div class="flex-row actions">
+                        <div class="flex-column" id="addVenda">
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/60/60611.png"
+                            />
+                            <span>Adicionar</span>
+
+                            <form
+                                action="/addVenda/"
+                                method="post"
+                                class="addVenda"
+                                id="addVendaForm"
+                            >
+                                {% csrf_token %}
+                                <div class="flex-column">
+                                    <span>Valor</span>
+                                    {{venda.valor}}
+                                </div>
+                                <button type="submit" id="submit"
+                                    >Enviar</button
+                                >
+                            </form>
+                        </div>
+
+                        <hr id="cancelVendaHr" />
+
+                        <div class="flex-column" id="cancelVenda">
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/179/179429.png"
+                            />
+                            <span>Cancelar</span>
+                        </div>
+
+                        <hr id="cancelEditMetaHr" />
+
+                        <div class="flex-column" id="cancelEditMeta">
+                            <img
+                                src="https://cdn-icons-png.flaticon.com/512/179/179429.png"
+                            />
+                            <span>Cancelar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-column right-panel">
+                <span>Meta do dia</span>
+                <div class="flex-row">
+                    <span>R$</span>
+                    <span id="metaDoDia"></span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="flex-row">
+            <div class="flex-column cards-footer">
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/55/55281.png"
+                />
+                <span id="fimDoMes"></span>
+                <span>Dias para fim do mês</span>
+            </div>
+
+            <div class="flex-column cards-footer">
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/806/806813.png"
+                />
+                <span class="flex-row">
+                    <span>R$</span>
+                    <span id="faltaParaMeta"></span>
+                </span>
+                <span>Falta para alcançar meta</span>
+            </div>
+
+            <div class="flex-column cards-footer"> </div>
+        </footer>
+        <p id="text-footer"
+            >Artglass Esquadrias - Todos os direitos reservados.</p
+        >
+
+        <script
+            type="text/javascript"
+            src="{% static 'js/index.js' %}"
+        ></script>
+    </body>
+</html>

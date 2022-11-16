@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/login.css'%}" />
+        <title>Registro</title>
+    </head>
+    <body class="flex-column">
+        <form action="dologin/" method="post" class="flex-column form">
+            {% csrf_token %}
+            <div class="form-content">
+                <h2>Registro</h2>
+                
+                <div>
+                    <span>Usuario</span>
+                    {{ registroForm.usuario }}
+                </div>
+
+                <div>
+                    <span>Senha</span>
+                    {{ registroForm.senha }}
+                </div>
+
+                <div>
+                    <span>Confirma senha</span>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <span>Meta</span>
+                    {{ registroForm.meta }}
+                </div>
+            </div>
+
+            <button type="submit" onclick="{window.location.href='/doregistro/'}">Enviar</button>
+
+            <div class="actions">
+                <a href="/">Login</a>
+            </div>
+        </form>
+         
+    </body>
+</html>

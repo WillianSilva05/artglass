@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+:root {
+    --bg-color: #DCE8E4;
+    --text-color: #36314b;
+    --link-color: #5b5475;
+    --selected-link-color: #000000;
+
+    --bg-card: #36314b;
+    --text-card-color: #fff;
+    --bg-cards: #fff;
+    --bg-panel: #83B28D;
+}
+
+html {
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+header {
+    justify-content: space-between;
+    padding: 25px 35px;
+}
+
+header > div > h3 {
+    margin-right: 35px;
+    font-size: 25px;
+}
+
+.nav {
+    align-items: flex-end;
+}
+
+/* css nav > ul > li */
+.flex-column > li {
+    list-style: none;
+    margin: 0 35px;
+    font-size: 14px;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: ease-in-out .5s;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: var(--selected-link-color);
+    transform: scale(1.1,1.1);
+}
+
+.selected {
+    color: var(--selected-link-color);
+    transform: scale(1.1,1.1);
+}
+
+.hr {
+    width: 0;
+    opacity: 0;
+    transition:ease-in-out .5s;
+    color: var(--bg-color);
+    margin-top: 2px;
+}
+
+.hr-selected {
+    opacity: 1;
+    width: 60%;
+}
+
+.profile > span {
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.profile > img {
+    border-radius: 100%;
+    width: 35px;
+} 
+
+.panels {
+    justify-content: space-between;
+    margin: 80px 100px;
+}
+
+.panel {
+    background-color: var(--bg-panel);
+    height: 200px;
+    width: 100%;
+    min-width: 530px;
+    margin-right: 15px;
+    border-radius: 5px;
+    padding-right: 50px;
+
+    box-shadow: 1px 2px 10px gray;
+}
+
+.card {
+    background-color: var(--bg-card);
+    color: var(--text-card-color);
+    justify-content: space-around;
+    max-width: 300px;
+    min-width: 200px;
+    width: 100%;
+    height: 180px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    position: relative;
+    top: -60px;
+    left: -50px;
+
+    box-shadow: 1px 2px 10px gray;
+}
+
+.card-header {
+    width: 90%;
+    justify-content: space-between;
+}
+
+.card-footer {
+    width: 90%;
+    justify-content: space-between;
+}
+
+
+.editMeta {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--link-color);
+    color: var(--text-card-color);
+
+    justify-content: center;
+    width: 300px;
+    height: 180px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    box-shadow: 1px 2px 10px gray;
+}
+
+.editMeta > div {
+    align-items: flex-start !important;
+}
+
+.editMeta > div > span {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.editMeta > div > input {
+    border: 1px solid gray;
+    appearance: textfield;
+    color: white;
+    border-radius: 5px;
+    padding: 0 5px;
+    background-color: #00000000;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.editMeta > #submit {
+    width: 58%;
+    height: 25px;
+}
+
+#editMeta > img {
+    width: 20px;
+}
+
+.info-panel {
+    align-items: flex-start;
+    position: relative;
+    left: -20px;
+}
+
+.vendido {
+    align-items: flex-start;
+    margin-bottom: 25px;
+    margin-left: 20px;
+}
+
+.vendido > span {
+    margin-bottom: 10px;
+}
+
+.vendido > div > span {
+    font-size: 22px;
+}
+
+.actions > div {
+    margin: 0 20px;
+}
+
+.actions > div > img {
+    width: 20px;
+    margin-bottom: 10px;
+}
+
+.actions > div > span {
+    font-size: 14px;
+    color: var(--link-color)
+}
+
+.actions > hr {
+    width: 50px;
+    border: none;
+    border-top: 1px solid var(--link-color);
+    transform: rotateZ(90deg);
+}
+
+.right-panel {
+    background-color: var(--bg-cards);
+    min-width: 300px;
+    height: 200px;
+    border-radius: 5px;
+    justify-content: space-around;
+    padding: 10px 30px;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.right-panel > div {
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+@media (max-width: 1100px) {
+    .right-panel {
+        display: none;
+    }
+}
+
+footer {
+    justify-content: space-evenly;
+    align-items: flex-end !important;
+    position: relative;
+    top: -70px;
+}
+
+.cards-footer {
+    background-color: var(--bg-cards);
+    border-radius: 5px;
+    min-width: 300px;
+    margin: 50px 20px;
+    justify-content: space-around;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.cards-footer:nth-child(1) {
+    height: 160px;
+}
+
+.cards-footer:nth-child(2) {
+    height: 200px;
+}
+
+.cards-footer:nth-child(3) {
+    height: 130px;
+}
+
+.cards-footer > img {
+    width: 40px;
+}
+
+.cards-footer > span:nth-child(2) {
+    font-size: 20px;
+}
+
+
+@media (max-width: 1000px) {
+    footer {
+        flex-wrap: wrap;
+    }
+}
+
+#text-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    position: relative;
+    top: -20px;
+}
+
+.addVenda {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--link-color);
+    color: var(--text-card-color);
+
+    justify-content: center;
+    width: 300px;
+    height: 180px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    position: absolute;
+    top: -86px;
+    left: -330px;
+
+    box-shadow: 1px 2px 10px gray;
+}
+
+.addVenda > div {
+    align-items: flex-start !important;
+}
+
+.addVenda > div > span {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.addVenda > div > input {
+    border: 1px solid gray;
+    appearance: textfield;
+    color: white;
+    border-radius: 5px;
+    padding: 0 5px;
+    background-color: #00000000;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.addVenda > #submit {
+    width: 58%;
+    height: 25px;
+}
+
+#cancelVenda,
+#cancelVendaHr,
+#cancelEditMeta,
+#cancelEditMetaHr  {
+    display: none;
+}

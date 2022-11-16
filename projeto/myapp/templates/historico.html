@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/historico.css' %}" />
+        <title>Histórico</title>
+    </head>
+    <body>
+        <header class="flex-row">
+            <div class="flex-row nav">
+                <h3>Termômetro</h3>
+                <nav>
+                    <ul class="flex-row">
+                        <div class="li-single flex-column">
+                            <li
+                                class="link"
+                                onclick="{window.location.href = '/home/'}"
+                                id="dashboard"
+                                >Dashboard</li
+                            >
+                            <hr class="hr" id="dashboard" />
+                        </div>
+                        <div class="li-single flex-column">
+                            <li class="link selected" id="historico"
+                                >Histórico</li
+                            >
+                            <hr class="hr hr-selected" id="historico" />
+                        </div>
+
+                        {% if log == 0 %}
+                        <div class="li-single flex-column">
+                            <li class="link" id="login">Login</li>
+                            <hr class="hr" id="login" />
+                        </div>
+                        {% else %}
+                        <div class="li-single flex-column">
+                            <li
+                                class="link"
+                                onclick="{window.location.href = '/logout/'}"
+                                id="logout"
+                                >Logout</li
+                            >
+                            <hr class="hr" id="logout" />
+                        </div>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="flex-row profile">
+                <span>{{ uid.usuario }}</span>
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                />
+            </div>
+        </header>
+
+        <main class="flex-row table">
+            <table width="90%" cellspadding="10px" frame="void">
+                <thead>
+                    <th align="left">Id</th>
+                    <th align="left">Valor</th>
+                    <th align="left">Excluir</th>
+                </thead>
+                <tbody>
+                    {% for c in vendas %}
+                    <tr>
+                        <td>{{c.id}}</td>
+                        <td>{{c.valor}}</td>
+                        <td width="10%">
+                            <button style="width: 100%; height: 30px;" onclick="{window.location.href = '/deleteVenda/' + {{c.id}} }">X</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+
+        <script
+            type="text/javascript"
+            src="{% static 'js/index.js' %}"
+        ></script>
+    </body>
+</html>
